@@ -34,3 +34,24 @@ app.use('/api', router);
 app.listen(port);
 console.log('Express is now listening on ' + port);
 
+//=================================
+//Base Setup
+//=================================
+var mongoose = require('mongoose');
+var env      = require('./environment');
+
+//connect to database
+mongoose.connect('mongodb://localhost/' + env.SAFE_TITLE);
+
+//test model
+var Hero = require('./models/hero');
+
+
+
+
+
+
+
+
+
+
