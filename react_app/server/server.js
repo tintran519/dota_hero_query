@@ -1,8 +1,7 @@
 var express     = require('express');
 var app         = express(); // defines app using express
 var bodyParser  = require('body-parser');
-//test model
-var Hero = require('./models/hero');
+var routes      = require('./routes');
 
 //=================================
 //Body Parser Setting
@@ -52,16 +51,6 @@ router.route('/heroes')
     });
 
   })
-
-    //get all heroes(GET http://localhost:8080/api/heroes)
-    .get(function(req, res) {
-      Hero.find(function(err, heroList) {
-          if(err)
-            res.send(err);
-
-          res.json(heroList);
-      });
-    });
 
 //Register Route
 //set prefix of route
