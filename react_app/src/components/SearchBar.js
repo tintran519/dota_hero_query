@@ -12,24 +12,17 @@ class SearchBar extends React.Component {
     }
   }
 
-  componentDidMount() {
-    fetch('/api/')
-        .then(function(response) {
-            if (response.status >= 400) {
-                throw new Error("Bad response from server");
-            }
-            return response.json();
-        })
-        .then(function(stories) {
-            console.log(stories);
-        });
-  }
-
-  // getHero() {
-  //   axios.get('http://api.sportradar.us/nba-t3/players/82e44ba0-efd4-41de-b998-056d2865cebf/profile.json?api_key=taxxj6d4y8ksdc9ywarkktzv')
-  //   .then(function(res){
-  //     console.log(res);
-  //   })
+  // componentDidMount() {
+  //   fetch('/api/')
+  //       .then(function(response) {
+  //           if (response.status >= 400) {
+  //               throw new Error("Bad response from server");
+  //           }
+  //           return response.json();
+  //       })
+  //       .then(function(stories) {
+  //           console.log(stories);
+  //       });
   // }
 
   changeHero(e){
@@ -40,6 +33,7 @@ class SearchBar extends React.Component {
 
   submitSearch(e) {
     e.preventDefault();
+    this.props.searchedHero(this.state.hero)
   }
 
   render() {

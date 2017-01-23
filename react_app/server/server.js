@@ -3,6 +3,9 @@ var app         = express(); // defines app using express
 var bodyParser  = require('body-parser');
 var routes      = require('./routes');
 
+//Load secrets from .env file
+require('dotenv').config();
+
 //=================================
 //Body Parser Setting
 //=================================
