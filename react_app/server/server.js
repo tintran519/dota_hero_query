@@ -3,6 +3,9 @@ var app         = express(); // defines app using express
 var bodyParser  = require('body-parser');
 var routes      = require('./routes');
 
+//Load secrets from .env file
+require('dotenv').config();
+
 //=================================
 //Body Parser Setting
 //=================================
@@ -18,43 +21,43 @@ var port = process.env.PORT || 8080;
 //Routes for API
 //==================================
 //get an instance of the express Router
-var router = express.Router();
+// var router = express.Router();
 
-//middleware to use for all requests
-router.use(function(req, res, next) {
-  //do logging
-  console.log('middleware here');
-  //go to next routes and don't stop here
-  next();
-});
+// //middleware to use for all requests
+// router.use(function(req, res, next) {
+//   //do logging
+//   console.log('middleware here');
+//   //go to next routes and don't stop here
+//   next();
+// });
 
-//test route
-router.get('/', function(req,res) {
-  res.json({ message: 'API is working!' });
-});
+// test route
+// router.get('/', function(req,res) {
+//   res.json({ message: 'API is working!' });
+// });
 
-//routes with /bears
-router.route('/heroes')
+// //routes with /bears
+// router.route('/heroes')
 
-  //create a hero(POST http://localhost:8080/api/heroes)
-  .post(function(req, res) {
+//   //create a hero(POST http://localhost:8080/api/heroes)
+//   .post(function(req, res) {
 
-    var hero = new Hero();
-    hero.name = req.body.name;
+//     var hero = new Hero();
+//     hero.name = req.body.name;
 
-    //save hero
-    hero.save(function(err) {
-      if(err)
-        res.send(err);
+//     //save hero
+//     hero.save(function(err) {
+//       if(err)
+//         res.send(err);
 
-      res.json({ message: 'Hero created!' })
-    });
+//       res.json({ message: 'Hero created!' })
+//     });
 
-  })
+//   })
 
 //Register Route
 //set prefix of route
-app.use('/api', router);
+app.use('/', routes);
 
 //=================================
 //Start server
